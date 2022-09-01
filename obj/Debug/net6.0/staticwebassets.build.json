@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dv2uEjRGFZnQ3wRfQb58A4U82gE+BMJOfNzdM6MwqaA=",
+  "Source": "WebAPIPayrollCSharp",
+  "BasePath": "_content/WebAPIPayrollCSharp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
