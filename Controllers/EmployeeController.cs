@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using WebAPIPayrollCSharp.Models;
+using System.Linq;
 
 namespace AspNetCoreWebAPI.Controllers{
 
@@ -29,7 +30,7 @@ namespace AspNetCoreWebAPI.Controllers{
     
     //
         [HttpGet]
-        [Route("list/{cpf}")]
+        [Route("list/search/{cpf}")]
 
         public IActionResult Search([FromRoute] string cpf){
 
@@ -42,16 +43,30 @@ namespace AspNetCoreWebAPI.Controllers{
         }
 
         [HttpPut]        
-        [Route("list/{OldCpf}/{Cpf}")]
-        public bool Edit ([FromRoute] string oldCpf, string cpf){
+        [Route("edit")]
+        public IActionResult Edit ([FromBody] Employee employee){
             //Execute method EditProduct with parameters OldCpf and New Cpf and save the result at variable 'edited' 
         foreach(Employee registeredEmployee in employees){
-                if(registeredEmployee.Cpf == oldCpf){
-                    registeredEmployee.Cpf = cpf;
-                    return true;
+                if(registeredEmployee.Cpf == employee.Cpf){
+                    registeredEmployee.Name = employee.Name;
+                    return Ok(registeredEmployee);
                 }
             }
-        return false;
+        return NotFound();
         }
+
+        //DELETE: /list/delete/123
+        [HttpDelete]
+        [Route("list/delete/{cpf}")]
+        public IActionResult Delete([FromRoute] string cpf){
+            
+            foreach(Employee employee in employees){
+ if(employee != null){
+            employees.Remove(employee);
+            return Ok(employee);
+        }
+        }
+            return NotFound();
+            }
     }
 }
