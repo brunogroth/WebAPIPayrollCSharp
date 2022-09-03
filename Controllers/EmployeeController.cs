@@ -8,7 +8,6 @@ namespace AspNetCoreWebAPI.Controllers{
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase{
-        private static List<Employee> employees = new List<Employee>();
         
         [HttpGet]
         //GET at route /api/user/list
@@ -23,7 +22,7 @@ namespace AspNetCoreWebAPI.Controllers{
 
         public IActionResult Register( [FromBody] Employee employee){
         
-        employees.Add(employee);
+        payroll.Add(employee);
         
             return Created("", employees);
         }
@@ -59,13 +58,17 @@ namespace AspNetCoreWebAPI.Controllers{
         [HttpDelete]
         [Route("list/delete/{cpf}")]
         public IActionResult Delete([FromRoute] string cpf){
-            
+            Employee employeeFind = null;
+                
             foreach(Employee employee in employees){
- if(employee != null){
-            employees.Remove(employee);
-            return Ok(employee);
-        }
-        }
+                if(employee.Cpf == cpf){
+                    employeeFind = employee;
+                }
+                if(employeeFind != null){
+                    employees.Remove(employee);
+                return Ok("Employee successfully deleted!");
+                }
+            }
             return NotFound();
             }
     }
