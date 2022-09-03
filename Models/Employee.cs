@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 namespace WebAPIPayrollCSharp.Models;
 
 public class Employee{

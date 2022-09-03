@@ -52,13 +52,3 @@ C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\runtimes\win
 C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Humanizer.dll
 C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\workspace\c-sharp-workspace\WebAPIPayrollCSharp\bin\Debug\net6.0\System.CodeDom.dll
