@@ -2,18 +2,28 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using WebAPIPayrollCSharp.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace AspNetCoreWebAPI.Controllers{
+
+    // ********************************************************************************
+    // PENDING MIGRATE FROM EMPLOYEES LIST FOR DATABASE
+    // ********************************************************************************
 
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase{
-        
-        [HttpGet]
+
+        private readonly EmployeeContext _employeeContext;
+        public EmployeeController(EmployeeContext context){
+            _employeeContext = context;
+        }
+
         //GET at route /api/user/list
+        [HttpGet]
         [Route("list")]
         public IActionResult List(){
-            return Ok(employees);
+             return Ok(_employeeContext.Employees.ToList());
         }
         //POST at /api/user/register
          
@@ -21,10 +31,9 @@ namespace AspNetCoreWebAPI.Controllers{
         [Route("register")] 
 
         public IActionResult Register( [FromBody] Employee employee){
-        
-        payroll.Add(employee);
-        
-            return Created("", employees);
+        _employeeContext.Employees.Add(employee);
+        _employeeContext.SaveChanges();
+            return Created("", employee);
         }
     
     //
@@ -33,7 +42,7 @@ namespace AspNetCoreWebAPI.Controllers{
 
         public IActionResult Search([FromRoute] string cpf){
 
-        foreach(Employee registeredEmployee in employees){
+        foreach(Employee registeredEmployee in _employeeContext.Employees){
             if(registeredEmployee.Cpf == cpf){
                     return Ok(registeredEmployee);
                 }
@@ -45,9 +54,10 @@ namespace AspNetCoreWebAPI.Controllers{
         [Route("edit")]
         public IActionResult Edit ([FromBody] Employee employee){
             //Execute method EditProduct with parameters OldCpf and New Cpf and save the result at variable 'edited' 
-        foreach(Employee registeredEmployee in employees){
+        foreach(Employee registeredEmployee in _employeeContext.Employees){
                 if(registeredEmployee.Cpf == employee.Cpf){
                     registeredEmployee.Name = employee.Name;
+                        _employeeContext.SaveChanges();
                     return Ok(registeredEmployee);
                 }
             }
@@ -60,12 +70,13 @@ namespace AspNetCoreWebAPI.Controllers{
         public IActionResult Delete([FromRoute] string cpf){
             Employee employeeFind = null;
                 
-            foreach(Employee employee in employees){
+            foreach(Employee employee in _employeeContext.Employees){
                 if(employee.Cpf == cpf){
                     employeeFind = employee;
                 }
                 if(employeeFind != null){
-                    employees.Remove(employee);
+                    _employeeContext.Employees.Remove(employee);
+                    _employeeContext.SaveChanges();
                 return Ok("Employee successfully deleted!");
                 }
             }
