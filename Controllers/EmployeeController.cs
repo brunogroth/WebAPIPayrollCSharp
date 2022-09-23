@@ -55,7 +55,7 @@ namespace AspNetCoreWebAPI.Controllers{
         public IActionResult Edit ([FromBody] Employee employee){
             //Execute method EditProduct with parameters OldCpf and New Cpf and save the result at variable 'edited' 
         foreach(Employee registeredEmployee in _employeeContext.Employees){
-                if(registeredEmployee.Cpf == employee.Cpf){
+                if(registeredEmployee.Id == employee.Id){
                     registeredEmployee.Name = employee.Name;
                         _employeeContext.SaveChanges();
                     return Ok(registeredEmployee);
@@ -66,12 +66,12 @@ namespace AspNetCoreWebAPI.Controllers{
 
         //DELETE: /list/delete/123
         [HttpDelete]
-        [Route("list/delete/{cpf}")]
-        public IActionResult Delete([FromRoute] string cpf){
+        [Route("list/delete/{id}")]
+        public IActionResult Delete([FromRoute] int id){
             Employee employeeFind = null;
                 
             foreach(Employee employee in _employeeContext.Employees){
-                if(employee.Cpf == cpf){
+                if(employee.Id == id){
                     employeeFind = employee;
                 }
                 if(employeeFind != null){
