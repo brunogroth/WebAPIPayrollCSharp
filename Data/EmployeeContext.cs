@@ -6,7 +6,7 @@ namespace WebAPIPayrollCSharp.Models{
             
         }
         public DbSet<Employee> Employees { get; set; }
-        
+        public DbSet<Folha> Folha {get; set;}
         //If there is any new class, you can create a table in db for it:
         // public DbSet<Payroll> Payroll {get; set;}
     }

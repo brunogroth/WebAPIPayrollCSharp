@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPIPayrollCSharp.Models;
 
@@ -10,9 +11,10 @@ using WebAPIPayrollCSharp.Models;
 namespace WebAPIPayrollCSharp.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [Migration("20221006224137_FolhaMigrationFixed")]
+    partial class FolhaMigrationFixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.8");
@@ -62,9 +64,6 @@ namespace WebAPIPayrollCSharp.Migrations
                     b.Property<int>("employeeId")
                         .HasColumnType("INTEGER")
                         .HasColumnName("employeeId");
-
-                    b.Property<double>("impostoFGTS")
-                        .HasColumnType("REAL");
 
                     b.Property<double>("impostoInss")
                         .HasColumnType("REAL");

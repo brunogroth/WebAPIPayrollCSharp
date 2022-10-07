@@ -6,9 +6,6 @@ using System.Collections.Generic;
 
 namespace AspNetCoreWebAPI.Controllers{
 
-    // ********************************************************************************
-    // PENDING MIGRATE FROM EMPLOYEES LIST FOR DATABASE
-    // ********************************************************************************
 
     [Route("api/[controller]")]
     [ApiController]
