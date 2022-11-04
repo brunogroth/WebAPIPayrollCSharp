@@ -22,7 +22,7 @@ namespace AspNetCoreWebAPI.Controllers{
         public IActionResult List(){
              return Ok(_employeeContext.Employees.ToList());
         }
-        //POST at /api/user/register
+        //POST at /api/Employee/register
          
         [HttpPost]
         [Route("register")] 
@@ -63,7 +63,7 @@ namespace AspNetCoreWebAPI.Controllers{
 
         //DELETE: /list/delete/123
         [HttpDelete]
-        [Route("list/delete/{id}")]
+        [Route("delete/{id}")]
         public IActionResult Delete([FromRoute] int id){
             Employee employeeFind = null;
                 
@@ -74,7 +74,7 @@ namespace AspNetCoreWebAPI.Controllers{
                 if(employeeFind != null){
                     _employeeContext.Employees.Remove(employee);
                     _employeeContext.SaveChanges();
-                return Ok("Employee successfully deleted!");
+                return Ok(employee);
                 }
             }
             return NotFound();

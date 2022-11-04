@@ -5,6 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors(
+    options => {
+        options.AddPolicy("CorsPolicy", builder => builder.
+        AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    }
+);
 builder.Services.AddDbContext<EmployeeContext>(
     dbContextOptions => dbContextOptions
                 .UseSqlite("DataSource=payroll.db;Cache=shared")
@@ -28,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
